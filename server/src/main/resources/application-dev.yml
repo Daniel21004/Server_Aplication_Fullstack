@@ -1,0 +1,9 @@
+my:
+  environments:
+    image-directory: "C:/Users/jorsh/OneDrive/Documentos/PROYECTOS/server/src/main/resources/static/image/"
+
+spring:
+  datasource:
+    password: daniel21
+    url: jdbc:mysql://localhost:3306/serverdb
+    username: root

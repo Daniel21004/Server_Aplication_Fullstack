@@ -1,0 +1,42 @@
+version: '3.9'
+
+services:
+  angular_app:
+    container_name: server-app
+    image: server-app-image
+    build: ./server/serverapp/
+    ports:
+      - 4200:80
+    depends_on:
+      - server_api
+
+  server_api:
+    container_name: server-api
+    image: server-api-image
+
+    # The image be'll build from Dockerfile at root directory
+    build: ./server/
+    ports:
+      - 8080:8080
+
+    # Custom environments created by me
+    environment:
+      DATABASE_URL: jdbc:mysql://mysql_db:3306/serverdb # Don't reference to 'localhost', reference to mysql_db service
+      DATABASE_USER: daniel
+      DATABASE_PASSWORD: daniel21
+
+    # Indicates that this image won't build before that mysql_db
+    depends_on:
+      - mysql_db
+
+  mysql_db:
+    container_name: server-db
+    image: mysql:latest # The image be'll download from DockerHub
+    ports:
+      - 3306:3306
+    # Environments of MYSQL database. (Normally, the environments must have the '-' before of the variable)
+    environment:
+      MYSQL_ROOT_PASSWORD: daniel21004
+      MYSQL_DATABASE: serverdb
+      MYSQL_USER: daniel
+      MYSQL_PASSWORD: daniel21

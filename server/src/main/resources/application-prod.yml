@@ -1,0 +1,9 @@
+my:
+  environments:
+    image-directory: "/media/resource/"
+
+spring:
+  datasource:
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USER}
+    password: ${DATABASE_PASSWORD}
