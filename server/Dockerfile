@@ -1,7 +1,4 @@
-FROM eclipse-temurin:20
-
-# Install Maven
-RUN apt-get update && apt-get install -y maven
+FROM maven:3.9.4-eclipse-temurin-17
 
 # Create a /app directory and work on it
 RUN mkdir -p  /app
