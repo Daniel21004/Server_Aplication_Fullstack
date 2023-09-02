@@ -31,7 +31,7 @@ services:
 
   mysql_db:
     container_name: server-db
-    image: mysql:latest # The image be'll download from DockerHub
+    image: mysql:8.1.0 # The image be'll download from DockerHub
     ports:
       - 3306:3306
     # Environments of MYSQL database. (Normally, the environments must have the '-' before of the variable)
